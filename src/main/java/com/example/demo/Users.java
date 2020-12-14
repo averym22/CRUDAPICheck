@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -23,12 +24,12 @@ public class Users {
         this.email = email;
     }
 
-    //@JsonIgnore
+    @JsonIgnore
     public String getPassword() {
         return password;
     }
 
-
+    @JsonProperty("password")
     public void setPassword(String password) {
         this.password = password;
     }

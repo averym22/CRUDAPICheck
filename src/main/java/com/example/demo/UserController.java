@@ -61,18 +61,17 @@ public class UserController {
     @PostMapping("/authenticate")
     public Object getAuthenticated(@RequestBody Users user) {
 
-         Users founduser = this.repository.findByEmail(user.getEmail());
-         Authenticated userpassed = new Authenticated();
-         UserA userfailed = new UserA();
+         Users foundUser = this.repository.findByEmail(user.getEmail());
+         Authenticated userPassed = new Authenticated();
+         UserA userFailed = new UserA();
 
-         if(founduser.getPassword().equals(user.getPassword())) {
-
-             userpassed.setAuthenticated(true);
-             userpassed.setUser(founduser);
-             return userpassed;
+         if(user.getPassword().equals(foundUser.getPassword())) {
+             userPassed.setAuthenticated(true);
+             userPassed.setUser(foundUser);
+             return userPassed;
          } else {
-             userfailed.setAuthenticated(false);
-             return userfailed;
+             userFailed.setAuthenticated(false);
+             return userFailed;
 
          }
 
